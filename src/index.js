@@ -28,7 +28,6 @@ function startTimer() {
         }
         seconds = checkSeconds(seconds);
         var tabCount = count.innerHTML = minutes + ":" + seconds;
-        console.log(tabCount);
         document.title = tabCount + " - " + "Pomodoro 25";
 
     }, 1000);
