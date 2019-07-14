@@ -22,6 +22,7 @@ function startTimer() {
         //if minutes is 0 stop the timer and clear interval
         //must reset the timer to be able to start again
         if(minutes < 0 ) {
+            audiocue();
             clearInterval(timer);
             minutes = 0;
             seconds = 0;
@@ -31,7 +32,6 @@ function startTimer() {
         document.title = tabCount + " - " + "Pomodoro 25";
 
     }, 1000);
-    // console.log(timer);
 }
 
 
@@ -45,7 +45,7 @@ function checkSeconds(sec) {
 
 //disable the button from clicking again, to stop executing per click, has to do with how I wrote the startTimer() function
 
-var buttonElement;
+var buttonElement = 0;
 function disableButtonClick() {
     buttonElement = document.getElementById('start-default');
     buttonElement.disabled = true;
@@ -72,6 +72,12 @@ function darkModeThemeOn() {
     var darkModeON = document.getElementById('body-container');
     darkModeON.classList.toggle('theme-off');
 }
+
+function audiocue() {
+    var audio = document.getElementById('myAudio');
+    audio.play();
+}
+
 //challenges
 //Figuring out that the button press needs to be disabled otherwise timer loops itself with a new time
 

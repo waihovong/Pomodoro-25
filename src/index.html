@@ -24,8 +24,11 @@
         <div class="main-container">
             <button id="start-default" class="button-default button-spacer" onclick="startTimer();disableButtonClick()">Start</button>
             <button id="stop-default" class="button-default button-spacer" onclick="pauseTimer()">Stop</button>
-                <button id="reset-default" class="button-default button-spacer" onclick="resetTimer()">Reset</button>
-            </div>
+            <button id="reset-default" class="button-default button-spacer" onclick="resetTimer();">Reset</button>
+        </div>
+        <audio id="myAudio">
+            <source src="/src/assets/sound/chime.wav" type="audio/wav">
+        </audio>
         </div>
     </body>
 <script type="text/javascript" src="/src/index.js"></script>
