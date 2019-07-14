@@ -18,6 +18,10 @@ html {
     padding: 30px;
 }
 
+#darkModeSwitch {
+    margin-top: 15px;
+}
+
 .switch {
     position: relative;
     display: inline-block;
@@ -103,6 +107,7 @@ input:checked + .slider:before {
     font-size: 16px;
     font-weight: 700;
     border-radius: 3px;
+    cursor: pointer;
 }
 
 .button-spacer {
@@ -137,7 +142,7 @@ input:checked + .slider:before {
 }
 
 #reset-default {
-    background-color: #f26d21;
+    background-color: rgb(201, 79, 13);
     color: white;
 }
 

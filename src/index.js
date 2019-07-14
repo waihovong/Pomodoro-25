@@ -27,7 +27,9 @@ function startTimer() {
             seconds = 0;
         }
         seconds = checkSeconds(seconds);
-        count.innerHTML = minutes + ":" + seconds;
+        var tabCount = count.innerHTML = minutes + ":" + seconds;
+        console.log(tabCount);
+        document.title = tabCount + " - " + "Pomodoro 25";
 
     }, 1000);
     // console.log(timer);
