@@ -21,14 +21,24 @@
         <div class="timer-default">
             <h1 id="timer">25:00</h1>
         </div>
-        <div class="main-container">
-            <button id="start-default" class="button-default button-spacer" onclick="startTimer();disableButtonClick()">Start</button>
+        <div class="main-container pomodoro-options">
+            <button id="start-default" class="button-default button-spacer" onclick="startTimerHelper(); disableButtonClick(1)">Start</button>
             <button id="stop-default" class="button-default button-spacer" onclick="pauseTimer()">Stop</button>
-            <button id="reset-default" class="button-default button-spacer" onclick="resetTimer();">Reset</button>
+            <button id="reset-default" class="button-default button-spacer" onclick="resetTimerHelper();">Reset</button>
         </div>
-        <audio id="myAudio">
+        <div class="main-container">
+            <button id="pomodoro-default" class="button-default button-spacer button-option" onclick="pomodoro(); disableButtonClick(2);">Pomodoro</button>
+            <button id="break-default" class="button-default button-spacer button-option" onclick="breakTimerFive(); disableButtonClick(3)">Break Time</button>
+        </div>
+        <div class="spacer">
+
+        </div>
+        <audio id="myAudio1">
             <source src="/src/assets/sound/chime.wav" type="audio/wav">
         </audio>
+        <audio id="myAudio2">
+            <source src="/src/assets/sound/open-ended.wav" type="audio/wav">
+        </audio>                
         </div>
     </body>
 <script type="text/javascript" src="/src/index.js"></script>
