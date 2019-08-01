@@ -110,14 +110,14 @@ function startTimerHelper() {
 
 //reset the timer back to 25 minutes
 function resetTimerPomodoro() {
-        resetElement = document.getElementById('timer').innerHTML = "25:00";
+        resetElement = document.getElementById('timer').innerText = "25:00";
         minutes = 25;
         seconds = 00;
 }
 
 //reset the timer back to 5 minutes
 function resetTimerBreak() {
-        resetElement = document.getElementById('timer').innerHTML = "5:00";
+        resetElement = document.getElementById('timer').innerText = "5:00";
         breakMinutes = 5;
         breakSeconds = 00;
 }
@@ -130,6 +130,7 @@ function resetTimerHelper() {
     buttonElement.disabled = false;
     pomodoroElement.disabled = false;
     breakElement.disabled = false;
+    clearTimeout(timer);
     if (pending === true) {
         resetTimerPomodoro();
     } else if (pending === false) {
@@ -150,7 +151,7 @@ function pomodoro() {
     pending = true;
     pauseTimer();
     resetTimerHelper();
-    document.getElementById('timer').innerHTML = "25:00";
+    document.getElementById('timer').innerText = "25:00";
 }
 
 //button function for the break time
@@ -158,7 +159,7 @@ function breakTimerFive() {
     pending = false;
     pauseTimer();
     resetTimerHelper();
-    document.getElementById('timer').innerHTML = "5:00";
+    document.getElementById('timer').innerText = "5:00";
 }
 
 function disableButtonClick(disableValue) {
