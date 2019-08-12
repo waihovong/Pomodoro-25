@@ -7,8 +7,6 @@ var buttonElement = 0;
 var pomodoroElement = 0;
 var breakElement = 0;
 
-//pending -> true = Pomodoro related functions
-//pending -> false = BreakTimer related functions
 var pending = true;
 
 var minutes = parseFloat(25);
@@ -18,8 +16,12 @@ var breakSeconds = parseFloat(00);
 
 var content = document.getElementById('main-content');
 
+/*
 
-//audio playlist to notify user that the time has finished
+* audiocue is a function that plays an audio notification to the user 
+* allowing them to know that 25 minutes / or 5 minutes is completed
+
+*/
 function audiocue(playList) {
     var audio = document.getElementById('myAudio1');
     var audioBreak = document.getElementById('myAudio2');
@@ -30,7 +32,13 @@ function audiocue(playList) {
     }
 }
 
-//check for if the seconds is < 10, if so then add additional 0's infront of integer
+
+/*
+
+* checkSeconds is a function to check if the seconds is < 10
+* if so add an additional 0 infront of < 10 integer
+
+*/
 function checkSeconds(sec) {
     if(sec < 10 && sec >= 0) {
         sec = "0" + sec;
@@ -38,7 +46,13 @@ function checkSeconds(sec) {
     return sec;
 }
 
-//pomodoro timer function for 25 minutes of productivity
+/*
+
+* pomodoroTimer is a function that counts down 25 minutes of productivity
+* and when the timer hits 00:00 it calls the audiocue function
+* displays the timer on the browers tab
+
+*/
 function pomodoroTimer() {
     pending = true;
     var count = document.getElementById('timer');
@@ -68,7 +82,13 @@ function pomodoroTimer() {
     }, 1000); 
 }
 
-//break time function give 5 minutes break time each study
+/*
+
+* breakTimer function gives 5 minutes of break time each study
+* when the timer hits 00:00 it plays an audio cue to notify the user that the break time has finished
+* displays the timer on the browers tab
+
+*/
 function breakTimer() {
     pending = false;
     var count = document.getElementById('timer');
@@ -99,6 +119,11 @@ function breakTimer() {
     }, 1000);
 }
 
+/*
+
+* startTimerHelper is a helper function to determine which function should be called
+
+*/
 function startTimerHelper() {
     bool = pending;
     if(pending == true) {
@@ -108,24 +133,38 @@ function startTimerHelper() {
     }
 }
 
-//reset the timer back to 25 minutes
+/* 
+
+* resetTimerPomodoro is a function that resets the display back to 25 minutes
+
+*/
 function resetTimerPomodoro() {
         resetElement = document.getElementById('timer').innerText = "25:00";
         minutes = 25;
         seconds = 00;
 }
 
-//reset the timer back to 5 minutes
+/*
+
+* resetTimerBreak is a function that resets the display back to 5 minutes
+
+*/
 function resetTimerBreak() {
         resetElement = document.getElementById('timer').innerText = "5:00";
         breakMinutes = 5;
         breakSeconds = 00;
 }
 
-//helper function to determine which reset needs to happen according to which button was clicked on first
 
-//ie, pomodoro button was clicked, thus reset 25 minutes
-//ie, break time button was clicked, thus reset 5 minutes
+/*
+
+* resetTimerHelper is a function to determins which reset needs to happen according to the function called
+    //ie, pomodoro button was clicked, thus reset 25 minutes
+    //ie, break time button was clicked, thus reset 5 minutes
+
+*/
+
+
 function resetTimerHelper() {
     buttonElement.disabled = false;
     pomodoroElement.disabled = false;
@@ -138,7 +177,12 @@ function resetTimerHelper() {
     }
 }
 
-//stop button to pause the timer, reset the disable button so the start button can be pressed again
+/*
+
+* pauseTimer is a function that pauses the timer
+* pauseTimer also resets the disabled buttons so that buttons can be clicked again
+
+*/
 function pauseTimer() {
     clearTimeout(timer);
     buttonElement.disabled = false;
@@ -146,7 +190,11 @@ function pauseTimer() {
     breakElement.disabled = false;
 }
 
-//button function for the pomodoro
+/*
+
+* pomodoro is a function that changes the display back to the pomodoro timer
+* resetting all the timers
+*/
 function pomodoro() {
     pending = true;
     pauseTimer();
@@ -154,7 +202,11 @@ function pomodoro() {
     document.getElementById('timer').innerText = "25:00";
 }
 
-//button function for the break time
+/*
+
+* breakTimerFive is a function that changes the timer to 5 minutes break time
+* resetting all the timers
+*/
 function breakTimerFive() {
     pending = false;
     pauseTimer();
@@ -162,6 +214,11 @@ function breakTimerFive() {
     document.getElementById('timer').innerText = "5:00";
 }
 
+/*
+
+* disableButtonClick is a function that disables the onclick for buttons so that they can not be clicked until enabled again.
+
+*/
 function disableButtonClick(disableValue) {
     if (disableValue === 1) {
         buttonElement = document.getElementById('start-default');
@@ -176,7 +233,11 @@ function disableButtonClick(disableValue) {
 }
 
 
-//reduces eye strain with dark mode slider
+/*
+
+* darkModeThemeOn is a function to reduce eye strain by changing the backgorund-color to a dark theme 
+
+*/  
 function darkModeThemeOn() {
     var darkModeON = document.getElementById('body-container');
     darkModeON.classList.toggle('theme-off');
