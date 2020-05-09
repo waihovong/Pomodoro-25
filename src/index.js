@@ -1,28 +1,28 @@
-var timer;
-var pomodoroTimer;
-var breakTimer;
-var resetElement;
+// let timer;
+// let pomodoroTimer;
+// let breakTimer;
+// let resetElement;
 
-var buttonElement = 0;
-var pomodoroElement = 0;
-var breakElement = 0;
+let buttonElement = 0;
+let pomodoroElement = 0;
+let breakElement = 0;
 
 //pending -> true = Pomodoro related functions
 //pending -> false = BreakTimer related functions
-var pending = true;
+let pending = true;
 
-var minutes = parseFloat(25);
-var seconds = parseFloat(00);
-var breakMinutes = parseFloat(5);
-var breakSeconds = parseFloat(00);
+let minutes = parseFloat(25);
+let seconds = parseFloat(00);
+let breakMinutes = parseFloat(5);
+let breakSeconds = parseFloat(00);
 
-var content = document.getElementById('main-content');
+let content = document.getElementById('main-content');
 
 
 //audio playlist to notify user that the time has finished
 function audiocue(playList) {
-    var audio = document.getElementById('myAudio1');
-    var audioBreak = document.getElementById('myAudio2');
+    let audio = document.getElementById('myAudio1');
+    let audioBreak = document.getElementById('myAudio2');
     if(playList ===  1) {
         audio.play();
     } else if(playList === 2) {
@@ -41,7 +41,7 @@ function checkSeconds(sec) {
 //pomodoro timer function for 25 minutes of productivity
 function pomodoroTimer() {
     pending = true;
-    var count = document.getElementById('timer');
+    let count = document.getElementById('timer');
     //setInterval used for every iteration of the timer
     timer = setInterval(function() {
         //reset the timer back up to 59 seconds once it reaches 0, else continually decrement the seconds
@@ -63,7 +63,7 @@ function pomodoroTimer() {
             seconds = 0;
         }
             seconds = checkSeconds(seconds);
-            var tabCount = count.innerHTML = minutes + ":" + seconds;
+            let tabCount = count.innerHTML = minutes + ":" + seconds;
             document.title = tabCount + " - " + "Pomodoro 25";
     }, 1000); 
 }
@@ -71,7 +71,7 @@ function pomodoroTimer() {
 //break time function give 5 minutes break time each study
 function breakTimer() {
     pending = false;
-    var count = document.getElementById('timer');
+    let count = document.getElementById('timer');
     //setInterval used for every iteration of the timer
     timer = setInterval(function() {
 
@@ -94,7 +94,7 @@ function breakTimer() {
             breakSeconds = 0;
         }
             breakSeconds = checkSeconds(breakSeconds);
-            var breakTab = count.innerHTML = breakMinutes + ":" + breakSeconds;
+            let breakTab = count.innerHTML = breakMinutes + ":" + breakSeconds;
             document.title = breakTab + " - " + "Pomodoro 25";
     }, 1000);
 }
@@ -178,7 +178,7 @@ function disableButtonClick(disableValue) {
 
 //reduces eye strain with dark mode slider
 function darkModeThemeOn() {
-    var darkModeON = document.getElementById('body-container');
+    let darkModeON = document.getElementById('body-container');
     darkModeON.classList.toggle('theme-off');
 }
 
